@@ -1,6 +1,10 @@
 const { category } = require("../models/categories");
 
 exports.categoriesController = async (req, res) => {
+
+  console.log(req.body)
+
+
   const categoria = new category(req.body);
   try {
     await categoria.save();
