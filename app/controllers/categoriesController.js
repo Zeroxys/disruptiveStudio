@@ -8,8 +8,8 @@ exports.categoriesController = async (req, res) => {
   const categoria = new category(req.body);
   try {
     await categoria.save();
-    res.status(201).send(categoria);
+    res.status(201).send({data: categoria});
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send({message: error});
   }
 }

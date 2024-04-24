@@ -5,8 +5,8 @@ exports.topicsController =  async (req, res) => {
 
   try {
     await tematica.save();
-    res.status(201).send(tematica);
+    res.status(201).send({data: tematica});
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send({message: error});
   }
 }

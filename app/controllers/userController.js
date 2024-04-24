@@ -14,8 +14,9 @@ exports.userController = async (req, res) => {
       role: req.body.role
     });
     await newUser.save();
-    res.status(201).send('User created successfully');
+    res.status(201).send({message : 'User created successfully'});
   } catch (error) {
+    console.log(error)
     res.status(500).send({error : error});
   }
 }
@@ -35,9 +36,9 @@ exports.userLoginController = async (req, res) => {
     }
 
     const token = jwt.sign({ _id: currentUser._id, role: currentUser.role }, 'SECRET', { expiresIn: '24h' });
-    res.header('auth-token', token).send(token);
+    res.header('auth-token', token).send({token});
 
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send({error: error.message});
   }
 }

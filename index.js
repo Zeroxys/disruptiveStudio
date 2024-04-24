@@ -7,12 +7,22 @@ const topicsRoutes = require('./app/routes/topics')
 const userRoutes = require('./app/routes/user')
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const db = require('./config/db')
 
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+  transports: ["polling"],
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 
 // Paths
 app.use("/api/v1/", categoriesRoutes)
