@@ -2,10 +2,11 @@
 const mongoose = require("mongoose");
 
 const categorySchema =  new mongoose.Schema({
-  nombre: String,
-  permiteImagenes: Boolean,
-  permiteVideos: Boolean,
-  permiteTextos: Boolean
+  name: String,
+  permitImages: Boolean,
+  permitVideos: Boolean,
+  permitTexts: Boolean,
+  topics: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Topic', name: String }]
 })
 
 const category = mongoose.model('Category', categorySchema);

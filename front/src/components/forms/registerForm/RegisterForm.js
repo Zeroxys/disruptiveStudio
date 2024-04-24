@@ -6,7 +6,7 @@ function RegistrationForm({ onRegister }) {
     username: '',
     email: '',
     password: '',
-    role: '',
+    role: 'admin',
   });
 
   const handleSubmit = async (e) => {
@@ -36,7 +36,7 @@ function RegistrationForm({ onRegister }) {
       </div>
       <div className="mb-4">
         <label htmlFor="role" className="block text-sm font-medium text-white">Rol</label>
-        <select id="role" name="role" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-black">
+        <select  onChange={(e) => setRegistrationData({ ...registrationData, role: e.target.value })} id="role" name="role" className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md text-black" >
           <option value="admin">Admin</option>
           <option value="lector">Lector</option>
           <option value="creador">Creador</option>
